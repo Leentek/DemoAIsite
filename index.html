@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StreamFlix — Unlimited movies, TV shows, and more. Watch anywhere. Cancel anytime.">
+  <title>StreamFlix — Watch Movies & TV Shows Online</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body>
+
+  <!-- ====== Navbar ====== -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">StreamFlix</a>
+
+    <ul class="nav-links d-none d-md-flex">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#">TV Shows</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">New & Popular</a></li>
+      <li><a href="#">My List</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="search-box" id="searchBox">
+        <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Titles, people, genres" id="searchInput">
+      </div>
+
+      <div class="nav-icon" style="position:relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notification-badge"></span>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button class="d-md-none" style="background:none;border:none;color:#fff;font-size:1.5rem;padding:4px;" id="mobileMenuBtn">☰</button>
+
+      <div class="nav-avatar" id="profileAvatar">D</div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Home</a>
+    <a href="#">TV Shows</a>
+    <a href="#">Movies</a>
+    <a href="#">New & Popular</a>
+    <a href="#">My List</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" style="background-image: url('img/hero_banner.png')"></div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        #1 Trending Today
+      </div>
+      <h1 class="hero-title">The Last Horizon</h1>
+      <div class="hero-meta">
+        <span class="rating">98% Match</span>
+        <span>2026</span>
+        <span class="badge">TV-MA</span>
+        <span>2h 34m</span>
+        <span class="badge">4K</span>
+      </div>
+      <p class="hero-desc">
+        In a world on the brink of collapse, one unlikely hero must journey across the wastelands to uncover the truth behind humanity's last hope. A gripping tale of survival, sacrifice, and redemption.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-play" onclick="showModal('The Last Horizon')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Play
+        </button>
+        <button class="btn btn-info" onclick="showModal('The Last Horizon')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          More Info
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Genre Pills ====== -->
+  <div class="genre-pills">
+    <button class="genre-pill active">All</button>
+    <button class="genre-pill">Action</button>
+    <button class="genre-pill">Thriller</button>
+    <button class="genre-pill">Sci-Fi</button>
+    <button class="genre-pill">Drama</button>
+    <button class="genre-pill">Horror</button>
+    <button class="genre-pill">Comedy</button>
+    <button class="genre-pill">Romance</button>
+    <button class="genre-pill">Documentary</button>
+    <button class="genre-pill">War</button>
+  </div>
+
+  <!-- ====== Trending Now ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">Trending Now</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="trending-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== Top 10 ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">Top 10 in Your Country Today</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="top10-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== Popular on StreamFlix ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">Popular on StreamFlix</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="popular-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== Continue Watching ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">Continue Watching</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="continue-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== New Releases ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">New Releases</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="new-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== Action & Adventure ====== -->
+  <section class="content-section">
+    <div class="row-header">
+      <h2 class="row-title">Action & Adventure</h2>
+      <a href="#" class="row-see-all">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="scroll-arrow left" onclick="scrollCarousel(this, -1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="carousel" id="action-carousel"></div>
+      <button class="scroll-arrow right" onclick="scrollCarousel(this, 1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== Modal ====== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-hero">
+        <img src="img/hero_banner.png" alt="Modal Hero" id="modalHeroImg">
+        <button class="modal-close" onclick="closeModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle">Title</h2>
+        <div class="modal-meta">
+          <span class="match">97% Match</span>
+          <span>2026</span>
+          <span>TV-MA</span>
+          <span>2 Seasons</span>
+        </div>
+        <p class="modal-desc" id="modalDesc">
+          When the world's last safe haven is threatened by a mysterious force, an unlikely group of survivors must band together on a perilous journey to save what remains of civilization.
+        </p>
+        <div class="hero-actions" style="margin-bottom:20px;">
+          <button class="btn btn-play" id="modalPlayBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Play
+          </button>
+          <button class="btn btn-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            My List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="#">TV Shows</a>
+        <a href="#">Movies</a>
+        <a href="#">New & Popular</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Account</a>
+        <a href="#">Help Center</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Corporate Info</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Discord</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 StreamFlix. All rights reserved. This is a demo project.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Watch War Machine and more on StreamFlix.">
+  <title>StreamFlix — Watch</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body>
+
+  <!-- ====== Navbar ====== -->
+  <nav class="navbar scrolled" id="navbar" style="background:rgba(10,10,10,0.95);">
+    <a href="index.html" class="nav-brand">StreamFlix</a>
+    <ul class="nav-links d-none d-md-flex">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">TV Shows</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">New & Popular</a></li>
+      <li><a href="#">My List</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="d-md-none" style="background:none;border:none;color:#fff;font-size:1.5rem;padding:4px;" onclick="document.getElementById('mobileMenu').classList.toggle('show')">☰</button>
+      <div class="nav-avatar">D</div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="#">TV Shows</a>
+    <a href="#">Movies</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- ====== Watch Page ====== -->
+  <main class="watch-page">
+    <div class="container-fluid px-lg-4">
+      <div class="row g-4">
+
+        <!-- ====== Main Player Column ====== -->
+        <div class="col-lg-9">
+          <!-- Video Player -->
+          <div class="player-wrapper" id="playerWrapper">
+            <iframe
+              id="videoPlayer"
+              src="https://vidsrc.to/embed/movie/tt4758646"
+              frameborder="0"
+              allowfullscreen
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerpolicy="origin"
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <!-- Movie Info -->
+          <div class="watch-info">
+            <div class="watch-info-top">
+              <h1 class="watch-title" id="watchTitle">War Machine</h1>
+              <div class="watch-actions">
+                <button class="card-btn" title="Add to My List">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <button class="card-btn" title="Like">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                </button>
+                <button class="card-btn" title="Share">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="watch-meta">
+              <span class="rating">92% Match</span>
+              <span>2017</span>
+              <span class="badge">TV-MA</span>
+              <span>2h 2m</span>
+              <span class="badge">HD</span>
+            </div>
+
+            <div class="watch-genres">
+              <span class="genre-tag">Comedy</span>
+              <span class="genre-tag">Drama</span>
+              <span class="genre-tag">War</span>
+            </div>
+
+            <p class="watch-desc">
+              A satirical war story about a general who, with the help of a tight-knit group of loyal soldiers, seized control of NATO's war strategy in the Middle East, only to be taken down by a journalist's damning exposé. Based on the book "The Operators" by the late Michael Hastings and inspired by real events, this dark comedy stars Brad Pitt as a charismatic four-star general.
+            </p>
+
+            <div class="watch-details">
+              <div class="detail-item"><strong>Cast:</strong> Brad Pitt, Anthony Michael Hall, Topher Grace, Will Poulter</div>
+              <div class="detail-item"><strong>Director:</strong> David Michôd</div>
+              <div class="detail-item"><strong>Source:</strong> <a href="https://www.cineby.gd/movie/354287" target="_blank" style="color:var(--accent);">cineby.gd</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== Recommendations Sidebar ====== -->
+        <div class="col-lg-3">
+          <div class="reco-sidebar">
+            <h3 class="reco-title">Recommended For You</h3>
+            <p class="reco-subtitle">Based on <strong>Comedy · Drama · War</strong></p>
+            <div class="reco-list" id="recoList">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer" style="margin-top:2rem;">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="#">TV Shows</a>
+        <a href="#">Movies</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">FAQ</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 StreamFlix. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ─── Recommendation data (genre-matched: Comedy, Drama, War) ───
+    const recommendations = [
+      {
+        title: 'War Machine',
+        year: '2017',
+        match: 92,
+        genres: ['Comedy','Drama','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/bU2Q2rCH5VFrJNKSyx6wSmQZFsX.jpg',
+        imdbId: 'tt4758646',
+        desc: 'A satirical take on America\'s war in Afghanistan.',
+        playing: true
+      },
+      {
+        title: 'The Big Short',
+        year: '2015',
+        match: 94,
+        genres: ['Comedy','Drama'],
+        poster: 'https://image.tmdb.org/t/p/w342/p11Ftd4VposrAzthkhF53ifYZRl.jpg',
+        imdbId: 'tt1596363',
+        desc: 'Four outsiders discover the banking fraud at the heart of the 2008 financial crisis.'
+      },
+      {
+        title: 'Jojo Rabbit',
+        year: '2019',
+        match: 91,
+        genres: ['Comedy','Drama','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/7GsM4mtM0worCtIVeiQt28HieeN.jpg',
+        imdbId: 'tt2584384',
+        desc: 'A boy discovers his mother is hiding a Jewish girl in their attic.'
+      },
+      {
+        title: 'Inglourious Basterds',
+        year: '2009',
+        match: 96,
+        genres: ['Drama','War','Adventure'],
+        poster: 'https://image.tmdb.org/t/p/w342/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg',
+        imdbId: 'tt0361748',
+        desc: 'A squad of Jewish-American soldiers plot to assassinate Nazi leaders.'
+      },
+      {
+        title: 'Catch-22',
+        year: '2019',
+        match: 87,
+        genres: ['Comedy','Drama','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/n2D0DqkGaUc3jMiVLeSeFHl1gJH.jpg',
+        imdbId: 'tt5765314',
+        desc: 'A satirical indictment of military bureaucracy during WWII.'
+      },
+      {
+        title: 'Three Kings',
+        year: '1999',
+        match: 85,
+        genres: ['Action','Comedy','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/c2gsmSQ2Cqv8zosqKOCwfNFPVVF.jpg',
+        imdbId: 'tt0120188',
+        desc: 'Soldiers set out to steal gold at the end of the Gulf War.'
+      },
+      {
+        title: '1917',
+        year: '2019',
+        match: 93,
+        genres: ['Drama','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/iZf0KyrE25z1sage4SYFDuEQvBc.jpg',
+        imdbId: 'tt8579674',
+        desc: 'Two soldiers must cross enemy territory to deliver a message.'
+      },
+      {
+        title: 'Dr. Strangelove',
+        year: '1964',
+        match: 90,
+        genres: ['Comedy','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/pIBmMWlTVAzjWvjfRSpI0mIJwR.jpg',
+        imdbId: 'tt0057012',
+        desc: 'A satirical cold war classic about nuclear catastrophe.'
+      },
+      {
+        title: 'Dunkirk',
+        year: '2017',
+        match: 89,
+        genres: ['Drama','War','Action'],
+        poster: 'https://image.tmdb.org/t/p/w342/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg',
+        imdbId: 'tt5013056',
+        desc: 'Allied soldiers struggle to evacuate Dunkirk during WWII.'
+      },
+      {
+        title: 'Whiskey Tango Foxtrot',
+        year: '2016',
+        match: 82,
+        genres: ['Comedy','Drama','War'],
+        poster: 'https://image.tmdb.org/t/p/w342/l23MojGnsc7hfO59sykbmLvSRsl.jpg',
+        imdbId: 'tt3553442',
+        desc: 'A journalist recounts her experiences in Afghanistan and Pakistan.'
+      }
+    ];
+
+    // ─── Build Recommendation Cards ───
+    function buildRecommendations() {
+      const list = document.getElementById('recoList');
+      // Get current movie from URL params or default to War Machine
+      const params = new URLSearchParams(window.location.search);
+      const currentId = params.get('imdb') || 'tt4758646';
+
+      // Update player if different movie
+      const currentMovie = recommendations.find(r => r.imdbId === currentId);
+      if (currentMovie && currentId !== 'tt4758646') {
+        document.getElementById('videoPlayer').src = `https://vidsrc.to/embed/movie/${currentId}`;
+        document.getElementById('watchTitle').textContent = currentMovie.title;
+      }
+
+      // Show all except current
+      const filtered = recommendations.filter(r => r.imdbId !== currentId);
+      list.innerHTML = filtered.map(r => `
+        <a href="watch.html?imdb=${r.imdbId}" class="reco-card">
+          <img class="reco-poster" src="${r.poster}" alt="${r.title}" loading="lazy">
+          <div class="reco-info">
+            <div class="reco-card-title">${r.title}</div>
+            <div class="reco-card-meta">
+              <span class="match">${r.match}%</span> · ${r.year}
+            </div>
+            <div class="reco-card-genres">${r.genres.join(' · ')}</div>
+            <div class="reco-card-desc">${r.desc}</div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', buildRecommendations);
+  </script>
+</body>
+</html>

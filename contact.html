@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact StreamFlix — We'd love to hear from you.">
+  <title>StreamFlix — Contact Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body>
+
+  <!-- ====== Navbar ====== -->
+  <nav class="navbar scrolled" id="navbar" style="background:rgba(10,10,10,0.95);">
+    <a href="index.html" class="nav-brand">StreamFlix</a>
+    <ul class="nav-links d-none d-md-flex">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">TV Shows</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">New & Popular</a></li>
+      <li><a href="#">My List</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="d-md-none" style="background:none;border:none;color:#fff;font-size:1.5rem;padding:4px;" onclick="document.getElementById('mobileMenu').classList.toggle('show')">☰</button>
+      <div class="nav-avatar">D</div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="#">TV Shows</a>
+    <a href="#">Movies</a>
+    <a href="contact.html" class="active">Contact Us</a>
+  </div>
+
+  <!-- ====== Contact Page ====== -->
+  <main class="contact-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+          <!-- Header -->
+          <div class="contact-header text-center">
+            <h1 class="contact-title">Get In Touch</h1>
+            <p class="contact-subtitle">Have a question, feedback, or just want to say hello? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Contact Form -->
+            <div class="col-md-7">
+              <div class="contact-card">
+                <h3 class="card-heading">Send us a Message</h3>
+                <form id="contactForm" onsubmit="return handleContactSubmit(event)">
+                  <div class="mb-3">
+                    <label for="contactName" class="form-label sf-label">Full Name</label>
+                    <input type="text" class="form-control sf-input" id="contactName" placeholder="Your full name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="contactEmail" class="form-label sf-label">Email Address</label>
+                    <input type="email" class="form-control sf-input" id="contactEmail" placeholder="your@email.com" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="contactSubject" class="form-label sf-label">Subject</label>
+                    <select class="form-select sf-input" id="contactSubject" required>
+                      <option value="" disabled selected>Select a topic</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                      <option value="Account Issue">Account Issue</option>
+                      <option value="Billing">Billing</option>
+                      <option value="Content Request">Content Request</option>
+                      <option value="Bug Report">Bug Report</option>
+                      <option value="Partnership">Partnership</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label for="contactMessage" class="form-label sf-label">Message</label>
+                    <textarea class="form-control sf-input" id="contactMessage" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-play sf-submit-btn w-100">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+                    Send Message
+                  </button>
+                </form>
+
+                <!-- Success Message -->
+                <div class="submit-success" id="submitSuccess" style="display:none;">
+                  <div class="success-icon">✓</div>
+                  <h3>Message Sent!</h3>
+                  <p>Your message has been saved. Thank you for reaching out — we'll get back to you soon.</p>
+                  <button class="btn btn-info" onclick="resetForm()" style="margin-top:12px;">Send Another</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="col-md-5">
+              <div class="contact-info-card">
+                <div class="info-icon">📧</div>
+                <h4>Email Us</h4>
+                <p>support@streamflix.com</p>
+              </div>
+              <div class="contact-info-card">
+                <div class="info-icon">💬</div>
+                <h4>Live Chat</h4>
+                <p>Available 24/7 for premium members</p>
+              </div>
+              <div class="contact-info-card">
+                <div class="info-icon">📞</div>
+                <h4>Call Us</h4>
+                <p>+1 (800) STREAM-FX</p>
+              </div>
+              <div class="contact-info-card">
+                <div class="info-icon">📍</div>
+                <h4>Visit Us</h4>
+                <p>123 Cinema Blvd, Los Angeles, CA 90001</p>
+              </div>
+
+              <!-- Previous Messages -->
+              <div class="previous-msgs-card" id="previousMsgsCard" style="display:none;">
+                <h4>📋 Previous Messages</h4>
+                <div id="previousMsgsList"></div>
+                <button class="btn btn-info btn-sm mt-2" onclick="downloadAllMessages()" style="font-size:0.78rem;">Download as .txt</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="#">TV Shows</a>
+        <a href="#">Movies</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Account</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 StreamFlix. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ─── Contact Form Submission → Saves to .txt file ───
+    function handleContactSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const subject = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value.trim();
+      const timestamp = new Date().toLocaleString();
+
+      // Build text entry
+      const entry = `=== Contact Submission ===\nDate: ${timestamp}\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}\n${'='.repeat(30)}\n\n`;
+
+      // Save to localStorage
+      const existing = localStorage.getItem('streamflix_contacts') || '';
+      localStorage.setItem('streamflix_contacts', existing + entry);
+
+      // Auto-download as .txt
+      downloadTxt(entry, `streamflix_contact_${Date.now()}.txt`);
+
+      // Show success
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('submitSuccess').style.display = 'block';
+
+      // Update previous messages
+      loadPreviousMessages();
+
+      return false;
+    }
+
+    function downloadTxt(content, filename) {
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadAllMessages() {
+      const all = localStorage.getItem('streamflix_contacts') || 'No messages yet.';
+      downloadTxt(all, 'streamflix_all_contacts.txt');
+    }
+
+    function resetForm() {
+      document.getElementById('contactForm').reset();
+      document.getElementById('contactForm').style.display = 'block';
+      document.getElementById('submitSuccess').style.display = 'none';
+    }
+
+    function loadPreviousMessages() {
+      const data = localStorage.getItem('streamflix_contacts');
+      const card = document.getElementById('previousMsgsCard');
+      const list = document.getElementById('previousMsgsList');
+
+      if (data) {
+        card.style.display = 'block';
+        const entries = data.split('=== Contact Submission ===').filter(e => e.trim());
+        list.innerHTML = entries.slice(-5).reverse().map(entry => {
+          const lines = entry.trim().split('\n');
+          const dateLine = lines.find(l => l.startsWith('Date:')) || '';
+          const nameLine = lines.find(l => l.startsWith('Name:')) || '';
+          const subjectLine = lines.find(l => l.startsWith('Subject:')) || '';
+          return `<div class="prev-msg-item">
+            <strong>${subjectLine.replace('Subject: ','')}</strong>
+            <span>${nameLine.replace('Name: ','')} · ${dateLine.replace('Date: ','')}</span>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    // Load on page ready
+    document.addEventListener('DOMContentLoaded', loadPreviousMessages);
+  </script>
+</body>
+</html>
